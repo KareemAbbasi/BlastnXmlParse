@@ -7,7 +7,7 @@ class IterationHit:
         self.hsp_positive = 0
         self.iteration_query_len = 0
         self.hit_def = ''
-        self.get_info()
+
 
     def get_info(self):
 
@@ -24,10 +24,14 @@ class IterationHit:
             if hit_num == '1':
                 first_hit = hit
                 break
+        if first_hit == 0:
+            return False
 
         self.hit_def = first_hit.find('Hit_def').text
         self.hit_def = ' '.join(self.hit_def.split(' ')[0:2])
         self.hsp_positive = float(first_hit.find('Hit_hsps').find('Hsp').find('Hsp_positive').text)
+
+        return True
 
     def get_result(self):
         if self.hsp_positive / self.iteration_query_len > 0.9:

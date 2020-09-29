@@ -14,13 +14,16 @@ class XmlParser:
         self.results = dict()
 
         self.find_iterations()
+        print(self.path)
 
     def find_iterations(self):
         iterations_root = self.root[8]
         iterations = iterations_root.findall('Iteration')
 
         for i in iterations:
-            self.iterations_hits.append(IterationHit(i))
+            iteration = IterationHit(i)
+            if iteration.get_info():
+                self.iterations_hits.append(iteration)
 
     def get_results(self):
         results = []
