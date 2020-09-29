@@ -1,5 +1,5 @@
-# XmlParse
-A script to parse xml files.
+# BlastXmlParse
+Finds the number of repetitions of each hit in the sequence files generated from blastn.
 
 ## Usage
 You will need to install the following:
